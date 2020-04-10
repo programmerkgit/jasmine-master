@@ -1,6 +1,7 @@
+// @ts-ignore
+// @ts-ignore
 import createSpy = jasmine.createSpy;
 
-export const dummy = '';
 describe('matchers', () => {
     it('should not', function () {
         expect(true).not.toBeFalsy();
@@ -85,5 +86,56 @@ describe('matchers', () => {
         expect(spy).toHaveBeenCalledTimes(3);
         expect(spy).toHaveBeenCalledWith(1);
         expect(spy).not.toHaveBeenCalledWith(2);
+    });
+    // it('should dom class', function () {
+    //     const el = document.createElement('div');
+    //     el.className = 'foo bar baz';
+    //     expect(el).toHaveClass('bar');
+    // });
+    it('should toMatch', function () {
+        expect('Helllo').not.toMatch(/Hel{1,2}o$/);
+        expect('Hello').toMatch(/Hel{1,2}o$/);
+        expect('Helo').toMatch(/Hel{1,2}o$/);
+    });
+    it('should expect toThrow', function () {
+        expect(() => {
+            return '1';
+        }).not.toThrow();
+        expect(() => {
+            throw new Error('throw');
+        }).toThrow();
+        expect(() => {
+            throw 'throw';
+        }).toThrow('throw');
+        expect(() => {
+            throw new Error('throw');
+        }).toThrow(new Error('throw'));
+        expect(() => {
+            throw new Error('throw');
+        }).not.toThrow(new Error('throw2'));
+    });
+    it('should expect toThrowError', function () {
+        expect(() => {
+            return '1';
+        }).not.toThrowError();
+        expect(() => {
+            throw new Error('throw');
+        }).toThrowError();
+        expect(() => {
+            throw 'throw';
+        }).not.toThrowError('throw');
+        expect(() => {
+            throw new Error('throw');
+        }).toThrowError('throw');
+        expect(() => {
+            throw new Error('throw');
+        }).toThrowError(/th/);
+
+        expect(() => {
+            throw new Error('throw');
+        }).toThrowError(Error, 'throw');
+        expect(() => {
+            throw new Error('throw');
+        }).not.toThrowError(Error, 'throw2');
     });
 });

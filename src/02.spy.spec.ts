@@ -1,4 +1,6 @@
+// @ts-ignore
 import createSpyObj = jasmine.createSpyObj;
+// @ts-ignore
 import createSpy = jasmine.createSpy;
 
 describe('spy', () => {

@@ -4,7 +4,10 @@
     "outDir": "dist-spec",
     "sourceRoot": "src",
     "mapRoot": "dist-spec",
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "types": [
+      "jasmine"
+    ]
   },
   "include": [
     "src/**/*.spec.ts",
